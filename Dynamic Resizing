@@ -1,0 +1,17 @@
+void resize(struct Stack *stack) {
+    int new_size = MAX_SIZE * 2;
+    int *new_items = (int *)malloc(new_size * sizeof(int));
+    
+    if (new_items == NULL) {
+        printf("Memory allocation failed!\n");
+        return;
+    }
+    
+    for (int i = 0; i <= stack->top; i++) {
+        new_items[i] = stack->items[i];
+    }
+    
+    free(stack->items);
+    stack->items = new_items;
+    MAX_SIZE = new_size; // Update the maximum size
+}
